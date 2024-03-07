@@ -1,0 +1,44 @@
+dataset:
+    datatype: rsicd
+    data_split:
+    dic_path : './data/rsicd.txt'
+    data_path: './data/rsicd_precomp/'
+    image_path: './data/rsicd_images/'
+    audio_path: './data/rsicd_audios/'
+    vocab_path: 'vocab/rsicd_splits_vocab.json'
+    batch_size: 30
+    batch_size_val: 30
+    workers: 3
+logs:
+    eval_step: 1
+    print_freq: 100
+    ckpt_save_path: "checkpoint/"
+    logger_name: 'logs/'
+
+rank: 0
+bit: 64
+labels: 30
+
+# ==============================================================================
+# Train options
+per_batch_size: 32
+pretrained_backbone: ""
+pretrained_checkpoint: ""
+output_dir: "./output"
+
+lr_scheduler: "cosine_annealing"
+lr: 0.0005
+T_max: 5
+max_epoch: 100
+warmup_epochs: 25
+weight_decay: 0.04
+eta_min: 0.0
+momentum: 0.9
+loss_scale: 1024
+label_smooth: 0
+label_smooth_factor: 0.1
+log_interval: 1
+ckpt_path: "outputs/"
+group_size: 1
+device_target: "GPU"
+
